@@ -36,7 +36,6 @@ let token = '9388017a354a9be54100a1a6952d9962b4e547ab';
 let repos = document.querySelector('.repos-preview');
 
 let printRes = ({ data }) => {
-  console.log(data)
   let { viewer } = data;
   let { repositories } = viewer;
   let preview;
@@ -66,6 +65,8 @@ let printRes = ({ data }) => {
 
 
   repositories.edges.forEach(repo => {
+    let date = new Date(repo.node.updatedAt)
+    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     let lang;
     repo.node.languages.edges.forEach(({node}) => {
       if (lang) {
@@ -76,15 +77,15 @@ let printRes = ({ data }) => {
     })
     if (preview) {
       preview += `<li class="preview">
-                        <h2><a href="">${repo.node.name}</a></h2>
+                        <h2><a href="https://github.com${repo.node.resourcePath}">${repo.node.name}</a></h2>
                         <p class="description">${repo.node.description}</p>
-                        <p class="languages">${lang} Updated 3 days ago</p>
+                        <p class="languages">${lang} Updated on ${date.getDate() + " " + months[date.getMonth()]}</p>
                     </li>`
     } else {
       preview = `<li class="preview">
-                        <h2><a href="">${repo.node.name}</a></h2>
+                        <h2><a href="https://github.com${repo.node.resourcePath}">${repo.node.name}</a></h2>
                         <p class="description">${repo.node.description}</p>
-                        <p class="languages">${lang} Updated 3 days ago</p>
+                        <p class="languages">${lang} Updated on ${date.getDate() + " " + months[date.getMonth()]}</p>
                     </li>`
     }
   })
