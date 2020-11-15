@@ -31,7 +31,7 @@ let query = `{
   }
 }`;
 
-let token = '9388017a354a9be54100a1a6952d9962b4e547ab';
+let token = '090f1785f6eff131ebab3323894f803fb720df30';
 
 let repos = document.querySelector('.repos-preview');
 
