@@ -6,7 +6,7 @@ let query = `{
     twitterUsername
     location
     bio
-    repositories(first:3, orderBy: {field: UPDATED_AT, direction: DESC}) {
+    repositories(first:20, orderBy: {field: UPDATED_AT, direction: DESC}) {
       totalCount
       edges {
         node {
